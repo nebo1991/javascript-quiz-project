@@ -37,4 +37,22 @@ class Quiz {
     if (this.currentQuestionIndex === this.questions.length) return true;
     if (this.currentQuestionIndex < this.questions.length) return false;
   }
+
+  filterQuestionsByDifficulty(difficulty) {
+    const newArr = this.questions.filter(
+      (element) => element.difficulty === difficulty
+    );
+    if (difficulty === 1 || difficulty === 2 || difficulty === 3)
+      return (this.questions = newArr);
+    return this.questions;
+  }
+
+  averageDifficulty() {
+    let questionAverageDifficulty = 0;
+    this.questions.reduce((acc, curr) => {
+      acc += curr.difficulty;
+      return (questionAverageDifficulty = acc);
+    }, 0);
+    return questionAverageDifficulty / this.questions.length;
+  }
 }
