@@ -18,19 +18,20 @@ class Quiz {
   }
 
   shuffleQuestions() {
-    let randomIndex = Math.floor(Math.random() * this.questions.length);
-    for (let i = 0; i < this.questions.length; i++) {
-      this.questions[i] = this.questions[randomIndex];
+    for (let i = this.questions.length - 1; i >= 0; i--) {
+      const randomIndex = Math.floor(Math.random() * (i + 1));
+      this.questions.push(this.questions[randomIndex]);
+      this.questions.splice(randomIndex, 1);
     }
+    return this.questions;
   }
 
   checkAnswer(answer) {
-    this.questions.forEach((element) => {
+    this.questions.map((element) => {
       if (element.answer === answer) {
         this.correctAnswers++;
       }
     });
-    return this.correctAnswers;
   }
 
   hasEnded() {

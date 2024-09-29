@@ -9,9 +9,11 @@ class Question {
   }
 
   shuffleChoices() {
-    let randomIndex = Math.floor(Math.random() * this.choices.length);
-    for (let i = 0; i < this.choices.length; i++) {
-      this.choices[i] = this.choices[randomIndex];
+    for (let i = this.choices.length - 1; i >= 0; i--) {
+      const randomIndex = Math.floor(Math.random() * (i + 1));
+      this.choices.push(this.choices[randomIndex]);
+      this.choices.splice(randomIndex, 1);
     }
+    return this.choices;
   }
 }
