@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
         .padStart(2, "0");
       const seconds = (quiz.timeRemaining % 60).toString().padStart(2, "0");
       timeRemainingContainer.innerText = `${minutes}:${seconds}`;
-
+      // Here I could do equals 0, but this is fine too. Its just that timer will show 00:00 before executing showResults and Clearing interval.
       if (quiz.timeRemaining < 0) {
         clearInterval(timer);
         showResults();
